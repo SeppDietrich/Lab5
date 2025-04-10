@@ -59,7 +59,7 @@ void handleClient(int clientSocket) {
             std::cout << "Client disconnected." << std::endl;
             break;
         }
-        std::cout << client.getUsername<<" : " << buffer << std::endl;
+        std::cout << client.getUsername()<<" : " << buffer << std::endl;
         send(clientSocket, buffer, bytesRead, 0);
     }
     close(clientSocket);
