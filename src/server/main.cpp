@@ -57,7 +57,7 @@ void handleClient(int clientSocket) {
             std::cout << "Client disconnected." << std::endl;
             break;
         }
-        const *char Username =client.getUsernameString();
+        const* char Username =client.getUsernameString();
         buffer =Username.c_str() + " : " + buffer
         std::cout << client.getUsernameString()<<" : " << buffer << std::endl;
         send(clientSocket, buffer, bytesRead, 0);
