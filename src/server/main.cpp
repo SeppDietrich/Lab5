@@ -23,7 +23,7 @@ public:
     ~User() {}  
 
     std::string getUsername(){
-        return Username
+        return Username;
     }
     bool authentication() {  
         const char* message = "Please enter username: ";  
