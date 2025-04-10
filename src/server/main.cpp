@@ -25,9 +25,7 @@ public:
     std::string getUsernameString(){
         return Username;
     }
-    const* char getUsernameChar(){
-        return Username.c_str();
-    }
+    
     bool authentication() {  
         char buffer[1024];
         memset(buffer, 0, sizeof(buffer));
@@ -59,7 +57,8 @@ void handleClient(int clientSocket) {
             std::cout << "Client disconnected." << std::endl;
             break;
         }
-        buffer =client.getUsernameChar() + " : " + buffer
+        const *char Username =client.getUsernameString();
+        buffer =Username.c_str() + " : " + buffer
         std::cout << client.getUsernameString()<<" : " << buffer << std::endl;
         send(clientSocket, buffer, bytesRead, 0);
     }
