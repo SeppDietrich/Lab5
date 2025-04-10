@@ -69,7 +69,11 @@ void handleClient(int clientSocket) {
         
         std::cout << fullMessage << std::endl;
         
-        send(clientSocket, fullMessage.c_str(), fullMessage.size(), 0);
+        int bytesSent = send(clientSocket, fullMessage.c_str(), fullMessage.size(), 0);  
+        if (bytesSent < 0) {
+            std::cerr << "Error sending message to client" << std::endl;
+            break;
+        }  
     }
     close(clientSocket);
 }
