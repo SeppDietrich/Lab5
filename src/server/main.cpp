@@ -42,10 +42,10 @@ public:
 
 
 void handleClient(int clientSocket) {
-    User client =new User();
+    User client =new User(clientSocket);
     char buffer[1024];
     if (!client.authentication()){
-        break;
+        return -1;
     }
 
     while (true) {
