@@ -58,12 +58,9 @@ void handleClient(int clientSocket) {
             break;
         }
         std::string Username =client.getUsernameString();
-        std::string temp = Username.c_str();
-        temp += " : ";
-        temp += buffer;
-        buffer = temp;
-        std::cout << Username<<" : " << buffer << std::endl;
-        send(clientSocket, buffer, bytesRead, 0);
+        std::string fullMessage=Username+" : "+ buffer;
+        std::cout << fullMessage<< std::endl;
+        send(clientSocket, fullMessage, fullMessage.size(), 0);
     }
     close(clientSocket);
 }
