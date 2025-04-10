@@ -60,7 +60,7 @@ void handleClient(int clientSocket) {
         std::string Username =client.getUsernameString();
         std::string fullMessage=Username+" : "+ buffer;
         std::cout << fullMessage<< std::endl;
-        send(clientSocket, fullMessage, fullMessage.size(), 0);
+        send(clientSocket, fullMessage.c_str(), fullMessage.size(), 0);
     }
     close(clientSocket);
 }
