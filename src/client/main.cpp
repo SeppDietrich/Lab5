@@ -29,12 +29,13 @@ int main() {
 
     while (true) {
         
-        std::cout << "Enter message: ";
+        
         std::cin.getline(buffer, sizeof(buffer));
         send(clientSocket, buffer, strlen(buffer), 0);
         memset(buffer, 0, sizeof(buffer));
         read(clientSocket, buffer, sizeof(buffer));
-        std::cout << "Server: " << buffer << std::endl;
+        std::cout << buffer << std::endl;
+        std::cout << "Enter message: ";
     }
 
     close(clientSocket);

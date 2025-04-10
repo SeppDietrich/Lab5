@@ -26,9 +26,6 @@ public:
         return Username;
     }
     bool authentication() {  
-        const char* message = "Please enter username: ";  
-        send(socket, message, strlen(message), 0);  
-        
         char buffer[1024];
         memset(buffer, 0, sizeof(buffer));
         int bytesRead = recv(socket, buffer, sizeof(buffer), 0);  
@@ -59,6 +56,7 @@ void handleClient(int clientSocket) {
             std::cout << "Client disconnected." << std::endl;
             break;
         }
+        buffer =client.getUsername() + " : " + buffer
         std::cout << client.getUsername()<<" : " << buffer << std::endl;
         send(clientSocket, buffer, bytesRead, 0);
     }
