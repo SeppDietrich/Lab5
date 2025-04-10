@@ -47,6 +47,7 @@ void handleClient(int clientSocket) {
     User client(clientSocket);
     char buffer[1024];
     if (!client.authentication()){
+        close(clientSocket);
         return;
     }
 
@@ -57,9 +58,17 @@ void handleClient(int clientSocket) {
             std::cout << "Client disconnected." << std::endl;
             break;
         }
-        std::string Username =client.getUsernameString();
-        std::string fullMessage=Username+" : "+ buffer;
-        std::cout << fullMessage<< std::endl;
+        buffer[bytesRead] = '\0';
+        
+        // Trim any trailing newlines or whitespace
+        std::string message(buffer);
+        message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
+        
+        std::string username = client.getUsernameString();
+        std::string fullMessage = username + " : " + message;
+        
+        std::cout << fullMessage << std::endl;
+        
         send(clientSocket, fullMessage.c_str(), fullMessage.size(), 0);
     }
     close(clientSocket);
