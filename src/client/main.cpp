@@ -26,6 +26,7 @@ int main() {
         std::cerr << "Connection failed." << std::endl;
         return -1;
     }
+    std::cout << "Please enter username: ";
 
     while (true) {
         
