@@ -46,7 +46,7 @@ public:
 
 
 void handleClient(int clientSocket) {
-    User client =new User(clientSocket);
+    User::User client =new User(clientSocket);
     char buffer[1024];
     if (!client.authentication()){
         return;
