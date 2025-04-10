@@ -5,13 +5,49 @@
 #include <arpa/inet.h>
 #include <thread>
 #include <vector>
+#include <string>
 
 #define PORT 8080
 #define MAX_CLIENTS 10
 
+class User
+{
+private:
+    int socket;
+    std::string Username;
+
+public:
+    User(int socket) {
+        this->socket = socket;  
+    }
+    ~User() {}  
+
+    bool authentication() {  
+        const char* message = "Please enter username: ";  
+        send(socket, message, strlen(message), 0);  
+        
+        char buffer[1024];
+        memset(buffer, 0, sizeof(buffer));
+        int bytesRead = recv(socket, buffer, sizeof(buffer), 0);  
+        
+        if (bytesRead <= 0) {
+            std::cout << "Client disconnected." << std::endl;
+            return false;  
+        }
+        
+        Username = std::string(buffer, bytesRead);  
+        return true;
+    }
+};
+
 
 void handleClient(int clientSocket) {
+    User client =new User();
     char buffer[1024];
+    if (!client.authentication()){
+        break;
+    }
+
     while (true) {
         memset(buffer, 0, sizeof(buffer));
         int bytesRead = read(clientSocket, buffer, sizeof(buffer));
