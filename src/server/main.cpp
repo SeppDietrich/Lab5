@@ -22,6 +22,9 @@ public:
     }
     ~User() {}  
 
+    std::string getUsername(){
+        return Username
+    }
     bool authentication() {  
         const char* message = "Please enter username: ";  
         send(socket, message, strlen(message), 0);  
@@ -38,6 +41,7 @@ public:
         Username = std::string(buffer, bytesRead);  
         return true;
     }
+
 };
 
 
@@ -45,7 +49,7 @@ void handleClient(int clientSocket) {
     User client =new User(clientSocket);
     char buffer[1024];
     if (!client.authentication()){
-        return -1;
+        return;
     }
 
     while (true) {
@@ -55,7 +59,7 @@ void handleClient(int clientSocket) {
             std::cout << "Client disconnected." << std::endl;
             break;
         }
-        std::cout << "Client: " << buffer << std::endl;
+        std::cout << client.getUsername<<" : " << buffer << std::endl;
         send(clientSocket, buffer, bytesRead, 0);
     }
     close(clientSocket);
