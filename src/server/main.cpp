@@ -9,9 +9,7 @@
 #define PORT 8080
 #define MAX_CLIENTS 10
 
-Class Client{
 
-}
 void handleClient(int clientSocket) {
     char buffer[1024];
     while (true) {
