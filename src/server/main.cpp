@@ -37,7 +37,7 @@ public:
         }
         
         Username = std::string(buffer, bytesRead);  
-        std::cout<<"Client authenticated as : " <<Username<<endl;
+        std::cout<<"Client authenticated as : " <<Username<<std::endl;
         return true;
     }
 
