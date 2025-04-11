@@ -25,7 +25,8 @@ public:
         this->socket = socket;  
     }
     ~User() {}  
-
+    ChatRoom* getCurrentRoom(){return currentRoom;}
+    void setCurrentRoom(ChatRoom* currentRoom){this->currentRoom=currentRoom;}
     std::string getUsernameString(){
         return Username;
     }
@@ -105,7 +106,7 @@ private:
                 return "Joining chat: " + data;
                 
             case 'm': // /message
-            	currentRoom->broadCastInRomm(Username, data);
+            	currentRoom->broadCastInRoom(Username, data);
                 return "Sending message: " + data;
                 
             case 'l': // /leave
