@@ -11,7 +11,7 @@
 #define PORT 8080
 #define MAX_CLIENTS 10
 
-
+class User;
 
 class ChatRoom{
 private:
