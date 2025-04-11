@@ -25,11 +25,11 @@ public:
         this->socket = socket;  
     }
     ~User() {}  
-    ChatRoom* User::getCurrentRoom() const {
+    ChatRoom* getCurrentRoom() const {
     	return currentRoom;
 	}
 
-	void User::setCurrentRoom(ChatRoom* room) {
+	void setCurrentRoom(ChatRoom* room) {
 	    currentRoom = room;
 	}
 
