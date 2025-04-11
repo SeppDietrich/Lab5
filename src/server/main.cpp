@@ -81,7 +81,7 @@ private:
         std::data =message.substr(posCommand+1);
         switch(command){
             case "/join":
-                if(authenticationSucces(data){
+                if(authenticationSucces(data)){
                     std::string returnMessage="Succesfuly loged in as "+ Username+ "\n";
                 }else{
                     return "Authentication Failed";
