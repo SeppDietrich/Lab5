@@ -96,11 +96,12 @@ private:
 
         
         switch(command[1]) {
-            case 'a': // /auth
+            case 'a':{ // /auth
                 if(authenticationSuccess(data)) {
                     return "Successfully logged in as " + data + "\n";
                 }
                 return "Authentication Failed";
+            }
             break;
                 
             case 'j': // /join
@@ -117,7 +118,7 @@ private:
             case 'l': // /leave
                 return "Leaving current chat";
             break;
-                
+
             default:
                 return "Unknown command: " + command;
         }
