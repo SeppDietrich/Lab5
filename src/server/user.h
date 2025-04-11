@@ -7,7 +7,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-
+#pragma once
 #define PORT 8080
 #define MAX_CLIENTS 10
 
