@@ -46,7 +46,7 @@ private:
 
 public:
     
-    void joinRoom(const User* user, int roomId) {
+    void joinRoom(User* user, int roomId) {
         
         bool found =false;
         findRoom:
