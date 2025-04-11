@@ -90,7 +90,7 @@ private:
             break;
             
             default:
-                return command;
+                return string(command);
             break;
             
         }
