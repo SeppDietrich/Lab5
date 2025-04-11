@@ -18,14 +18,14 @@ private:
     std::vector<User*> chaters;
     int id;
     ChatRoom(int id){
-        this.id=id;
+        this->id=id;
     }
     ~ChatRoom();
 
 
 public:
-    void addChater(const User* chater){
-        chaters.push_back(chater);
+    void addChater(User* user){
+        chaters.push_back(user);
     }
     void broadCastInRoom(std::string Username, std::string message){
         std::string fullMessage=Username+" : "+message+"\n";
