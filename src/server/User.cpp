@@ -16,8 +16,8 @@
 
 class User{
 private:
+	RoomHandler* roomHandler;
     int socket;
-    RoomHandler* roomHandler;
     std::string Username;
     ChatRoom* currentRoom;
 
