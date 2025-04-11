@@ -75,7 +75,7 @@ public:
         return Username;
     }
 
-    void sendMessage(message){
+    void sendMessage(std::string message){
         int bytesSent = send(socket, message.c_str(), message.size(), 0);  
             if (bytesSent < 0) {
                 std::cerr << "Error sending message to client" << std::endl;
