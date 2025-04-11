@@ -26,16 +26,9 @@ public:
         return Username;
     }
     
-    bool authentication() {  
-        char buffer[1024];
-        memset(buffer, 0, sizeof(buffer));
-        int bytesRead = recv(socket, buffer, sizeof(buffer), 0);  
+    bool authenticationSucces(std::string sentUsername) {  
         
-        if (bytesRead <= 0) {
-            std::cout << "Client disconnected." << std::endl;
-            return false;  
-        }
-        
+        if()
         Username = std::string(buffer, bytesRead);  
         std::cout<<"Client authenticated as : " <<Username<<std::endl;
         return true;
@@ -43,10 +36,6 @@ public:
 
     void handleClient() {
         char buffer[1024];
-        if (!authentication()){
-            close(socket);
-            return;
-        }
 
         while (true) {
             memset(buffer, 0, sizeof(buffer));
@@ -64,7 +53,7 @@ public:
             
             std::string fullMessage = parseMesage(message);
             
-            std::cout << fullMessage << std::endl;
+            std::cout << fullMessage << "\n";
             
             int bytesSent = send(socket, fullMessage.c_str(), fullMessage.size(), 0);  
             if (bytesSent < 0) {
@@ -75,6 +64,7 @@ public:
         close(socket);
     }
 private:
+
     std::string parseMesage(std::string message){
         message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
         if(message[0]!='/'){
@@ -86,10 +76,25 @@ private:
             
             return manual;
         }
-        return "Unknown command";
-    }
+        int posCommand =messge.find(" ");
+        std::string command=message.substr(0, posCommand);
+        std::data =message.substr(posCommand+1);
+        switch(command){
+            case "/join":
+                if(authenticationSucces(data){
+                    std::string returnMessage="Succesfuly loged in as "+ Username+ "\n";
+                }else{
+                    return "Authentication Failed";
+                }
+            break;
+            
+            default:
+                return command;
+            break;
+            
+        }
 
-
+    return "Unknown command";
 };
 
 

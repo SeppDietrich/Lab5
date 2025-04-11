@@ -26,10 +26,7 @@ int main() {
         std::cerr << "Connection failed." << std::endl;
         return -1;
     }
-    std::cout << "Please enter username: ";
-    std::cin.getline(buffer, sizeof(buffer));
-    send(clientSocket, buffer, strlen(buffer), 0);
-
+    std::cout << "Succsesfuly connected \n";
     while (true) {
         
         std::cout << "Enter message: ";
