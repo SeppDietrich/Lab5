@@ -80,8 +80,8 @@ private:
         int posCommand =message.find(" ");
         char command=message.substr(0, posCommand);
         std::string data =message.substr(posCommand+1);
-        switch(){
-            case '/join':
+        switch(command){
+            case "/join":
                 if(authenticationSucces(data)){
                     std::string returnMessage="Succesfuly loged in as "+ Username+ "\n";
                 }else{
@@ -90,7 +90,7 @@ private:
             break;
             
             default:
-                return string(command);
+                return std::string str(command);
             break;
             
         }
