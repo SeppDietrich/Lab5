@@ -17,13 +17,14 @@ class ChatRoom{
 private:
     std::vector<User*> chaters;
     int id;
+    
+
+
+public:
     ChatRoom(int id){
         this->id=id;
     }
     ~ChatRoom();
-
-
-public:
     int getId(){return id;}
     void addChater(User* user){
         chaters.push_back(user);
