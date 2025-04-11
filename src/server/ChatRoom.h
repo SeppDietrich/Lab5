@@ -28,7 +28,7 @@ public:
     int getId(){return id;}
     void addChater(User* user){
         chaters.push_back(user);
-        user->setCurrentRoom(roomToJoin);
+        user->setCurrentRoom(this);
     }
     void broadCastInRoom(std::string Username, std::string message){
         std::string fullMessage=Username+" : "+message+"\n";
