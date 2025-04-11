@@ -18,6 +18,7 @@ class User{
 private:
     int socket;
     std::string Username;
+    ChatRoom* currentRoom;
 
 public:
     User(int socket) {
@@ -104,6 +105,7 @@ private:
                 return "Joining chat: " + data;
                 
             case 'm': // /message
+            	currentRoom->broadCastInRomm(Username, data);
                 return "Sending message: " + data;
                 
             case 'l': // /leave

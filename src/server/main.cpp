@@ -14,8 +14,6 @@
 #define MAX_CLIENTS 10
 
 
-
-
 class RoomHandler {
 private:
     std::vector<ChatRoom> rooms;
@@ -45,7 +43,9 @@ public:
         }
         
         roomToJoin->addChater(user);
+        User->currentRoom=roomToJoin;
     }
+    
 };
 
 
