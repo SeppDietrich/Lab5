@@ -27,7 +27,7 @@ public:
     
     bool authenticationSuccess(std::string sentUsername) {  
         
-        if(sentUsername.length()){
+        if(sentUsername.length()<100){
             return false;
         }
         Username = sentUsername;  
