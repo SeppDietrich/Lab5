@@ -117,7 +117,7 @@ int main() {
 
         User client(clientSocket);
 
-        std::thread(client.handleClient()).detach();
+        std::thread(&User::handleClient, &client).detach();
     }
 
     close(serverSocket);
