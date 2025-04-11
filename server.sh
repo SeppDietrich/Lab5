@@ -1,7 +1,7 @@
 #!/bin/bash
 git pull
 
-g++ -o server src/server/main.cpp
+g++ -std=c++11 src/server/main.cpp src/server/User.cpp src/server/ChatRoom.cpp -o server -lpthread
 
 ./server
 
