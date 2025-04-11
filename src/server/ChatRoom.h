@@ -8,6 +8,7 @@
 #include <string>
 #include <algorithm>
 #include "User.h"
+#pragma once
 
 #define PORT 8080
 #define MAX_CLIENTS 10
