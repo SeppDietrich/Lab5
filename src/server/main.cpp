@@ -11,6 +11,29 @@
 #define PORT 8080
 #define MAX_CLIENTS 10
 
+
+
+class ChatRoom{
+private:
+    std::vector<User*> chaters;
+    int id;
+    ChatRoom(int id){
+        this.id=id;
+    }
+    ~ChatRoom();
+
+
+public:
+    void addChater(const User* chater){
+        chaters.push_back(chater);
+    }
+    void broadCastInRoom(std::string Username std::string message){
+        std::string fullMessage=Username+" : "+message+"\n";
+        for (User* user : chaters) {
+            user->sendMessage(fullMessage);
+        }
+    }
+};
 class RoomHandler {
 private:
     std::vector<ChatRoom> rooms;
@@ -34,28 +57,6 @@ public:
         }
 
         const_cast<ChatRoom&>(*it).addUser(user); 
-    }
-};
-
-class ChatRoom{
-private:
-    std::vector<User*> chaters;
-    int id;
-    ChatRoom(int id){
-        this.id=id;
-    }
-    ~ChatRoom();
-
-
-public:
-    void addChater(const User* chater){
-        chaters.push_back(chater);
-    }
-    void broadCastInRoom(std::string Username std::string message){
-        std::string fullMessage=Username+" : "+message+"\n";
-        for (User* user : chaters) {
-            user->sendMessage(fullMessage);
-        }
     }
 };
 
