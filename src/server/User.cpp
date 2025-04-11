@@ -101,19 +101,22 @@ private:
                     return "Successfully logged in as " + data + "\n";
                 }
                 return "Authentication Failed";
+            break;
                 
             case 'j': // /join
             	int roomId=std::stoi(data);
             	roomHandler.joinRoom(this, data);
-
+			break;
                 return "Joining chat: " + data;
                 
             case 'm': // /message
             	currentRoom->broadCastInRoom(Username, data);
                 return "Sending message: " + data;
-                
+            break;
+
             case 'l': // /leave
                 return "Leaving current chat";
+            break;
                 
             default:
                 return "Unknown command: " + command;

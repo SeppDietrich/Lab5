@@ -1,7 +1,6 @@
 #pragma once
 #include <string>
 
-// Forward declaration instead of including ChatRoom.h
 class ChatRoom;
 
 class User {

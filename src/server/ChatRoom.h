@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 
-// Forward declaration instead of including User.h
 class User;
 
 class ChatRoom {
