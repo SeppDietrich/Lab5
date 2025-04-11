@@ -78,9 +78,9 @@ private:
             return manual;
         }
         int posCommand =message.find(" ");
-        std::string command=message.substr(0, posCommand);
+        char command=message.substr(0, posCommand);
         std::string data =message.substr(posCommand+1);
-        switch(command.c_str){
+        switch(){
             case '/join':
                 if(authenticationSucces(data)){
                     std::string returnMessage="Succesfuly loged in as "+ Username+ "\n";
