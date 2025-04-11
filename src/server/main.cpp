@@ -32,7 +32,7 @@ public:
     void broadCastInRoom(std::string Username, std::string message){
         std::string fullMessage=Username+" : "+message+"\n";
         for(int i=0;i<chaters.size();i++){
-            chaters[i].sendMessage(fullMessage);
+            chaters[i]->sendMessage(fullMessage);
         }
        
     }
