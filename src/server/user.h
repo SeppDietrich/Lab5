@@ -25,7 +25,7 @@ public:
         this->socket = socket;  
     }
     ~User() {}  
-    
+
     ChatRoom* getCurrentRoom() const {
     	return currentRoom;
 	}
@@ -79,7 +79,7 @@ public:
     }
 private:
 
-    std::string parseMesage(std::string message){
+    std::string parseMessage(std::string message){
         message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
         if(message[0]!='/'){
             std::string manual=
@@ -103,7 +103,7 @@ private:
                 return "Authentication Failed";
                 
             case 'j': // /join
-            	int roomId=eval(data);
+            	int roomId=std::stoi(data);
             	roomHandler.joinRoom(this, data);
 
                 return "Joining chat: " + data;
