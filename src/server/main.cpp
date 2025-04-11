@@ -10,6 +10,20 @@
 #define PORT 8080
 #define MAX_CLIENTS 10
 
+class ChatRoom{
+private:
+    std::vector<char> sockets;
+    int id;
+    ChatRoom(){
+
+    }
+    ~ChatRoom();
+
+    void broadCastInRoom(){
+
+    }
+};
+
 class User{
 private:
     int socket;
@@ -142,7 +156,7 @@ int main() {
             std::cerr << "Accept failed." << std::endl;
             continue;
         }
-        std::cout << "New client connected: " <<clientAddr<< std::endl;
+        std::cout << "New client connected: "<< std::endl;
 
         User client(clientSocket);
 
