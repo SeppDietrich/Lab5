@@ -26,7 +26,7 @@ public:
     }
     ~User() {}  
     ChatRoom* getCurrentRoom(){return currentRoom;}
-    void setCurrentRoom(ChatRoom* currentRoom){this->currentRoom=currentRoom;}
+    void setCurrentRoom(ChatRoom* currentRoom){this.currentRoom=currentRoom;}
     std::string getUsernameString(){
         return Username;
     }
