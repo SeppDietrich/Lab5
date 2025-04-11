@@ -7,12 +7,13 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-
+#include "RoomHandler.h"  // Own header first
+#include "ChatRoom.h"     // For ChatRoom class
+#include "User.h"         // For User class
 
 #define PORT 8080
 #define MAX_CLIENTS 10
-class ChatRoom;
-class User;
+
 
 class RoomHandler {
 private:
