@@ -82,11 +82,11 @@ private:
                 "/auth [username] - authenticate \n"
                 "/join [chatNumber] - join chat \n"
                 "/message [message] -message sent into chat \n"
-                "/leave -leave chat \n"
-            ;
+                "/leave -leave chat \n";
             
             return manual;
         }
+        return "Unknown command";
     }
 
 
