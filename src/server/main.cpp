@@ -43,7 +43,7 @@ public:
         }
         
         roomToJoin->addChater(user);
-        
+
     }
     
 };
@@ -87,7 +87,7 @@ int main() {
         }
         std::cout << "New client connected: "<< std::endl;
 
-        User client(clientSocket);
+        User client(clientSocket, roomHandler);
 
         std::thread(&User::handleClient, &client).detach();
     }

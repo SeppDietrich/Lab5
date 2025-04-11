@@ -8,6 +8,7 @@ extern RoomHandler roomHandler;
 class User {
 private:
     int socket;
+    RoomHandler& roomHandler;
     std::string Username;
     ChatRoom* currentRoom;
 

@@ -10,19 +10,21 @@
 #include "ChatRoom.h"
 
 
-#pragma once
+
 #define PORT 8080
 #define MAX_CLIENTS 10
 
 class User{
 private:
     int socket;
+    RoomHandler& roomHandler;
     std::string Username;
     ChatRoom* currentRoom;
 
 public:
-    User(int socket) {
+    User(int socket, RoomHandler& rh) {
         this->socket = socket;  
+        this->roomHandler=rh;
     }
     ~User() {}  
 
