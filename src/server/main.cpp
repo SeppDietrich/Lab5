@@ -24,6 +24,7 @@ private:
 
 
 public:
+    int getId(){return id;}
     void addChater(User* user){
         chaters.push_back(user);
     }
