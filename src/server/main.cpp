@@ -43,7 +43,7 @@ public:
         }
         
         roomToJoin->addChater(user);
-        User->currentRoom=roomToJoin;
+        user->currentRoom=roomToJoin;
     }
     
 };
