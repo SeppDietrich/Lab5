@@ -78,7 +78,7 @@ private:
         }
         int posCommand =messge.find(" ");
         std::string command=message.substr(0, posCommand);
-        std::data =message.substr(posCommand+1);
+        std::string data =message.substr(posCommand+1);
         switch(command){
             case "/join":
                 if(authenticationSucces(data)){
