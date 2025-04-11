@@ -56,7 +56,7 @@ public:
             it = rooms.end() - 1; 
         }
 
-        const_cast<ChatRoom&>(*it).addUser(user); 
+        it.addUser(user); 
     }
 };
 
