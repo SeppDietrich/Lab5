@@ -41,7 +41,7 @@ public:
         return true;
     }
 
-    void handleClient(socket) {
+    void handleClient() {
         char buffer[1024];
         if (!authentication()){
             close(socket);
