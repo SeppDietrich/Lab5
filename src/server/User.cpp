@@ -1,13 +1,8 @@
-#include <iostream>
-#include <cstring>
-#include <cstdlib>
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <thread>
-#include <vector>
-#include <string>
-#include <algorithm>
+#include "User.h"
 #include "ChatRoom.h"
+#include "RoomHandler.h"  // New include
+#include <cstring>
+#include <unistd.h>
 
 
 
@@ -22,17 +17,17 @@ private:
     ChatRoom* currentRoom;
 
 public:
-    User(int socket, RoomHandler rh) {
-        this->socket = socket;  
-        this->roomHandler=rh;
-    }
+    User(int socket, RoomHandler& rh) : 
+	    socket(socket), 
+	    roomHandler(rh),
+	    currentRoom(nullptr) {}
     ~User() {}  
 
     ChatRoom* getCurrentRoom() const {
     	return currentRoom;
 	}
 
-	void setCurrentRoom(ChatRoom* room) {
+	void User::setCurrentRoom(ChatRoom* room) {
 	    currentRoom = room;
 	}
 

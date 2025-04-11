@@ -1,28 +1,29 @@
 #pragma once
 #include <string>
 
+
 class ChatRoom;
 class RoomHandler;
-
 
 class User {
 private:
     int socket;
-    RoomHandler& roomHandler;
     std::string Username;
     ChatRoom* currentRoom;
+    RoomHandler& roomHandler;  
 
 public:
+    // Updated constructor
     User(int socket, RoomHandler& rh);
     ~User();
     
-    ChatRoom* getCurrentRoom() const;
+    // Existing methods...
     void setCurrentRoom(ChatRoom* room);
-    
+    ChatRoom* getCurrentRoom() const;
     void sendMessage(const std::string& message);
     bool authenticationSuccess(std::string sentUsername);
     void handleClient();
 
 private:
-    std::string parseMesage(std::string message);
+    std::string parseMessage(std::string message);
 };
