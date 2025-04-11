@@ -7,6 +7,8 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include "main.cpp"
+
 #pragma once
 #define PORT 8080
 #define MAX_CLIENTS 10
