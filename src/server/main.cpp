@@ -59,10 +59,10 @@ public:
             
             // Trim any trailing newlines or whitespace
             std::string message(buffer);
-            message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
             
-            std::string username = getUsernameString();
-            std::string fullMessage = username + " : " + message;
+            
+            
+            std::string fullMessage = parseMesage(message)
             
             std::cout << fullMessage << std::endl;
             
@@ -73,6 +73,20 @@ public:
             }  
         }
         close(socket);
+    }
+private:
+    std::string parseMesage(std::string message){
+        message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
+        if(message[0]!='/'){
+            std::string manual="
+                /auth [username] - authenticate \n
+                /join [chatNumber] - join chat \n
+                /message [message] -message sent into chat \n
+                /leave -leave chat \n
+            ";
+            
+            return manual;
+        }
     }
 
 
