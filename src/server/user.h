@@ -13,7 +13,7 @@ private:
     ChatRoom* currentRoom;
 
 public:
-    User(int socket);
+    User(int socket, RoomHandler& rh);
     ~User();
     
     ChatRoom* getCurrentRoom() const;
