@@ -31,9 +31,10 @@ public:
     }
     void broadCastInRoom(std::string Username, std::string message){
         std::string fullMessage=Username+" : "+message+"\n";
-        for (User* user : chaters) {
-            user->sendMessage(fullMessage);
+        for(int i=0;i<chaters.size();i++){
+            user[i].sendMessage(fullMessage);
         }
+       
     }
 };
 class RoomHandler {
