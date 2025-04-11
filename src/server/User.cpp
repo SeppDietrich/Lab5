@@ -17,12 +17,12 @@
 class User{
 private:
     int socket;
-    RoomHandler& roomHandler;
+    RoomHandler* roomHandler;
     std::string Username;
     ChatRoom* currentRoom;
 
 public:
-    User(int socket, RoomHandler& rh) {
+    User(int socket, RoomHandler rh) {
         this->socket = socket;  
         this->roomHandler=rh;
     }
