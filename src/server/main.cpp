@@ -10,8 +10,7 @@
 #define PORT 8080
 #define MAX_CLIENTS 10
 
-class User
-{
+class User{
 private:
     int socket;
     std::string Username;
@@ -28,8 +27,10 @@ public:
     
     bool authenticationSucces(std::string sentUsername) {  
         
-        if()
-        Username = std::string(buffer, bytesRead);  
+        if(sentUsername.length()){
+            return false;
+        }
+        Username = sentUsername;  
         std::cout<<"Client authenticated as : " <<Username<<std::endl;
         return true;
     }
@@ -76,11 +77,11 @@ private:
             
             return manual;
         }
-        int posCommand =messge.find(" ");
+        int posCommand =message.find(" ");
         std::string command=message.substr(0, posCommand);
         std::string data =message.substr(posCommand+1);
         switch(command){
-            case "/join":
+            case '/join':
                 if(authenticationSucces(data)){
                     std::string returnMessage="Succesfuly loged in as "+ Username+ "\n";
                 }else{
