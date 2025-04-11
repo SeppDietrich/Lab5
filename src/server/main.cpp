@@ -25,7 +25,7 @@ public:
         return Username;
     }
     
-    bool authenticationSucces(std::string sentUsername) {  
+    bool authenticationSuccess(std::string sentUsername) {  
         
         if(sentUsername.length()){
             return false;
