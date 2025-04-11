@@ -14,7 +14,7 @@ private:
 
 public:
     // Updated constructor
-    User(int socket, RoomHandler& rh);
+    User(int& socket, RoomHandler& rh);
     ~User();
     
     // Existing methods...
