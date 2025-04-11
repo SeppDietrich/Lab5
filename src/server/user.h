@@ -18,21 +18,15 @@ class User{
 private:
     int socket;
     std::string Username;
-    ChatRoom* currentRoom;
+    
 
 public:
+	ChatRoom* currentRoom;
     User(int socket) {
         this->socket = socket;  
     }
     ~User() {}  
 
-    ChatRoom* getCurrentRoom() const {
-    	return currentRoom;
-	}
-
-	void setCurrentRoom(ChatRoom* room) {
-	    currentRoom = room;
-	}
 
     void sendMessage(const std::string& message){
         int bytesSent = send(socket, message.c_str(), message.size(), 0);  

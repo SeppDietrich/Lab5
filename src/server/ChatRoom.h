@@ -13,18 +13,7 @@
 #define PORT 8080
 #define MAX_CLIENTS 10
 
-class User {
-private:
-    ChatRoom* currentRoom;
-public:
-    void setCurrentRoom(ChatRoom* room) { currentRoom = room; }
-};
 
-// Now implement ChatRoom::addChater AFTER User is fully defined
-void ChatRoom::addChater(User* user) {
-    chaters.push_back(user);
-    user->setCurrentRoom(this);  // Now compiler knows about setCurrentRoom
-}
 
 
 class ChatRoom{
@@ -43,7 +32,7 @@ public:
     int getId(){return id;}
     void addChater(User* user){
         chaters.push_back(user);
-        user->setCurrentRoom(this);
+        user->currentRoom=this;
     }
     void broadCastInRoom(std::string Username, std::string message){
         std::string fullMessage=Username+" : "+message+"\n";
