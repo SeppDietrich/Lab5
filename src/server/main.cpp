@@ -9,6 +9,7 @@
 #include <algorithm>
 #include "User.h"
 #include "ChatRoom.h"
+#include "RoomHandler.h"
 
 #define PORT 8080
 #define MAX_CLIENTS 10
