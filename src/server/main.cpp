@@ -69,7 +69,7 @@ public:
 };
 
 
-
+RoomHandler roomHandler;
 
 
 int main() {

@@ -95,6 +95,9 @@ private:
                 return "Authentication Failed";
                 
             case 'j': // /join
+            	int roomId=eval(data);
+            	roomHandler.joinRoom(this, data);
+
                 return "Joining chat: " + data;
                 
             case 'm': // /message
