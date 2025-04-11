@@ -25,12 +25,13 @@ public:
         this->socket = socket;  
     }
     ~User() {}  
-    ChatRoom* getCurrentRoom(){return currentRoom;}
+    ChatRoom* User::getCurrentRoom() const {
+    	return currentRoom;
+	}
 
-    void setCurrentRoom(ChatRoom* room){this->currentRoom=room;}
-    std::string getUsernameString(){
-        return Username;
-    }
+	void User::setCurrentRoom(ChatRoom* room) {
+	    currentRoom = room;
+	}
 
     void sendMessage(const std::string& message){
         int bytesSent = send(socket, message.c_str(), message.size(), 0);  
