@@ -25,6 +25,7 @@ public:
         this->socket = socket;  
     }
     ~User() {}  
+    
     ChatRoom* getCurrentRoom() const {
     	return currentRoom;
 	}
