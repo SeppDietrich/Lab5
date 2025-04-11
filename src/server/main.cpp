@@ -77,23 +77,29 @@ private:
             
             return manual;
         }
-        int posCommand =message.find(" ");
-        std::string command=message.substr(0, posCommand);
-        char commandChar=command.c_str();
-        std::string data =message.substr(posCommand+1);
-        switch(commandChar){
-            case "/join":
-                if(authenticationSucces(data)){
-                    std::string returnMessage="Succesfuly loged in as "+ Username+ "\n";
-                }else{
-                    return "Authentication Failed";
+        int spacePos = message.find(' ');
+        std::string command = message.substr(0, spacePos);
+        std::string data = (spacePos != std::string::npos) ? message.substr(spacePos + 1) : "";
+
+        // Switch on first character after '/'
+        switch(command[1]) {
+            case 'a': // /auth
+                if(authenticationSuccess(data)) {
+                    return "Successfully logged in as " + data + "\n";
                 }
-            break;
-            
+                return "Authentication Failed";
+                
+            case 'j': // /join
+                return "Joining chat: " + data;
+                
+            case 'm': // /message
+                return "Sending message: " + data;
+                
+            case 'l': // /leave
+                return "Leaving current chat";
+                
             default:
-                return command;
-            break;
-            
+                return "Unknown command: " + command;
         }
 
         return "Unknown command";
