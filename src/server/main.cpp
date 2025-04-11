@@ -6,21 +6,56 @@
 #include <thread>
 #include <vector>
 #include <string>
+#include <algorithm>
 
 #define PORT 8080
 #define MAX_CLIENTS 10
 
+class RoomHandler {
+private:
+    std::vector<ChatRoom> rooms;
+
+    void createRoom(int roomId) {
+        rooms.emplace_back(roomId); 
+    }
+
+public:
+    
+    void joinRoom(const User* user, int roomId) {
+        
+        auto it = std::find_if(rooms.begin(), rooms.end(),
+            [roomId](const ChatRoom& room) {
+                return room.getId() == roomId;
+            });
+
+        if (it == rooms.end()) {
+            createRoom(roomId);
+            it = rooms.end() - 1; 
+        }
+
+        const_cast<ChatRoom&>(*it).addUser(user); 
+    }
+};
+
 class ChatRoom{
 private:
-    std::vector<char> sockets;
+    std::vector<User*> chaters;
     int id;
-    ChatRoom(){
-
+    ChatRoom(int id){
+        this.id=id;
     }
     ~ChatRoom();
 
-    void broadCastInRoom(){
 
+public:
+    void addChater(const User* chater){
+        chaters.push_back(chater);
+    }
+    void broadCastInRoom(std::string Username std::string message){
+        std::string fullMessage=Username+" : "+message+"\n";
+        for (User* user : chaters) {
+            user->sendMessage(fullMessage);
+        }
     }
 };
 
@@ -37,6 +72,14 @@ public:
 
     std::string getUsernameString(){
         return Username;
+    }
+
+    void sendMessage(message){
+        int bytesSent = send(socket, message.c_str(), message.size(), 0);  
+            if (bytesSent < 0) {
+                std::cerr << "Error sending message to client" << std::endl;
+                break;
+            }  
     }
     
     bool authenticationSuccess(std::string sentUsername) {  
@@ -69,13 +112,9 @@ public:
             
             std::string fullMessage = parseMesage(message);
             
-            std::cout << fullMessage << "\n";
+            //std::cout << fullMessage << "\n";
             
-            int bytesSent = send(socket, fullMessage.c_str(), fullMessage.size(), 0);  
-            if (bytesSent < 0) {
-                std::cerr << "Error sending message to client" << std::endl;
-                break;
-            }  
+            sendMessage(fullMessage); 
         }
         close(socket);
     }
