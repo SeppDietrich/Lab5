@@ -41,43 +41,44 @@ public:
         return true;
     }
 
+    void handleClient(socket) {
+        char buffer[1024];
+        if (!authentication()){
+            close(socket);
+            return;
+        }
+
+        while (true) {
+            memset(buffer, 0, sizeof(buffer));
+            int bytesRead = read(socket, buffer, sizeof(buffer));
+            if (bytesRead <= 0) {
+                std::cout << "Client disconnected." << std::endl;
+                break;
+            }
+            buffer[bytesRead] = '\0';
+            
+            // Trim any trailing newlines or whitespace
+            std::string message(buffer);
+            message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
+            
+            std::string username = getUsernameString();
+            std::string fullMessage = username + " : " + message;
+            
+            std::cout << fullMessage << std::endl;
+            
+            int bytesSent = send(socket, fullMessage.c_str(), fullMessage.size(), 0);  
+            if (bytesSent < 0) {
+                std::cerr << "Error sending message to client" << std::endl;
+                break;
+            }  
+        }
+        close(socket);
+    }
+
+
 };
 
 
-void handleClient(int clientSocket) {
-    User client(clientSocket);
-    char buffer[1024];
-    if (!client.authentication()){
-        close(clientSocket);
-        return;
-    }
-
-    while (true) {
-        memset(buffer, 0, sizeof(buffer));
-        int bytesRead = read(clientSocket, buffer, sizeof(buffer));
-        if (bytesRead <= 0) {
-            std::cout << "Client disconnected." << std::endl;
-            break;
-        }
-        buffer[bytesRead] = '\0';
-        
-        // Trim any trailing newlines or whitespace
-        std::string message(buffer);
-        message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
-        
-        std::string username = client.getUsernameString();
-        std::string fullMessage = username + " : " + message;
-        
-        std::cout << fullMessage << std::endl;
-        
-        int bytesSent = send(clientSocket, fullMessage.c_str(), fullMessage.size(), 0);  
-        if (bytesSent < 0) {
-            std::cerr << "Error sending message to client" << std::endl;
-            break;
-        }  
-    }
-    close(clientSocket);
-}
 
 int main() {
     int serverSocket, clientSocket;
@@ -114,7 +115,9 @@ int main() {
         }
         std::cout << "New client connected." << std::endl;
 
-        std::thread(handleClient, clientSocket).detach();
+        User client(clientSocket);
+
+        std::thread(client.handleClient()).detach();
     }
 
     close(serverSocket);
