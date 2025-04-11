@@ -27,7 +27,7 @@ public:
     void addChater(const User* chater){
         chaters.push_back(chater);
     }
-    void broadCastInRoom(std::string Username std::string message){
+    void broadCastInRoom(std::string Username, std::string message){
         std::string fullMessage=Username+" : "+message+"\n";
         for (User* user : chaters) {
             user->sendMessage(fullMessage);
