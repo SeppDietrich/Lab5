@@ -69,7 +69,7 @@ public:
             
             
             
-            std::string fullMessage = parseMesage(message);
+            std::string fullMessage = parseMessage(message);
             
             //std::cout << fullMessage << "\n";
             
