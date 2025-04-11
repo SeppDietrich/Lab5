@@ -75,12 +75,11 @@ public:
         return Username;
     }
 
-    void sendMessage(std::string message){
+    void sendMessage(const std::string& message) const {
         int bytesSent = send(socket, message.c_str(), message.size(), 0);  
-            if (bytesSent < 0) {
-                std::cerr << "Error sending message to client" << std::endl;
-                break;
-            }  
+        if (bytesSent < 0) {
+            std::cerr << "Error sending message to client" << std::endl;
+        }  
     }
     
     bool authenticationSuccess(std::string sentUsername) {  
