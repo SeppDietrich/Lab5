@@ -79,7 +79,7 @@ private:
         }
         int posCommand =message.find(" ");
         std::string command=message.substr(0, posCommand);
-        char commandChar=command;
+        char commandChar=command.c_str();
         std::string data =message.substr(posCommand+1);
         switch(commandChar){
             case "/join":
