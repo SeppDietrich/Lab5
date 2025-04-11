@@ -142,7 +142,7 @@ int main() {
             std::cerr << "Accept failed." << std::endl;
             continue;
         }
-        std::cout << "New client connected: " <<clientSocket<< std::endl;
+        std::cout << "New client connected: " <<&clientAddr<< std::endl;
 
         User client(clientSocket);
 
