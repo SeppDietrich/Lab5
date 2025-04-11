@@ -41,23 +41,27 @@ private:
 
     void createRoom(int roomId) {
         rooms.emplace_back(roomId); 
+
     }
 
 public:
     
     void joinRoom(const User* user, int roomId) {
         
-        auto it = std::find_if(rooms.begin(), rooms.end(),
-            [roomId](const ChatRoom& room) {
-                return room.getId() == roomId;
-            });
-
-        if (it == rooms.end()) {
+        bool found =false;
+        findRoom:
+        ChatRoom* roomToJoin=nullptr;
+        for(int i=0;i<rooms.length;i++){
+            if(rooms[i].getId()==roomId){
+                found=true;
+            }
+        }
+        if(!found){
             createRoom(roomId);
-            it = rooms.end() - 1; 
+            goto findRoom;
         }
 
-        it.addUser(user); 
+        roomToJoin.addChater(user);
     }
 };
 
