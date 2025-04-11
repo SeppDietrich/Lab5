@@ -3,7 +3,7 @@
 
 class ChatRoom;
 class RoomHandler;
-extern RoomHandler roomHandler; 
+
 
 class User {
 private:
