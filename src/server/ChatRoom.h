@@ -23,7 +23,8 @@ public:
     ChatRoom(int id){
         this->id=id;
     }
-    ~ChatRoom();
+    
+    ~ChatRoom() = default;
     int getId(){return id;}
     void addChater(User* user){
         chaters.push_back(user);

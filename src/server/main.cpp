@@ -28,20 +28,22 @@ private:
 public:
     
     void joinRoom(User* user, int roomId) {
+        ChatRoom* roomToJoin = nullptr;
         
-        bool found =false;
-        findRoom:
-        ChatRoom* roomToJoin=nullptr;
-        for(int i=0;i<rooms.size();i++){
-            if(rooms[i].getId()==roomId){
-                found=true;
+        // Find existing room
+        for(auto& room : rooms) {
+            if(room.getId() == roomId) {
+                roomToJoin = &room;
+                break;
             }
         }
-        if(!found){
-            createRoom(roomId);
-            goto findRoom;
+        
+        // Create new room if not found
+        if(!roomToJoin) {
+            rooms.emplace_back(roomId);
+            roomToJoin = &rooms.back();
         }
-
+        
         roomToJoin->addChater(user);
     }
 };
