@@ -46,6 +46,7 @@ public:
                 break;
             }
             buffer[bytesRead] = '\0';
+
             
             // Trim any trailing newlines or whitespace
             std::string message(buffer);
@@ -81,7 +82,7 @@ private:
         std::string command = message.substr(0, spacePos);
         std::string data = (spacePos != std::string::npos) ? message.substr(spacePos + 1) : "";
 
-        // Switch on first character after '/'
+        
         switch(command[1]) {
             case 'a': // /auth
                 if(authenticationSuccess(data)) {
@@ -141,7 +142,7 @@ int main() {
             std::cerr << "Accept failed." << std::endl;
             continue;
         }
-        std::cout << "New client connected." << std::endl;
+        std::cout << "New client connected: " <<clientSocket<< std::endl;
 
         User client(clientSocket);
 
