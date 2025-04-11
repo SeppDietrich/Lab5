@@ -32,7 +32,7 @@ public:
     int getId(){return id;}
     void addChater(User* user){
         chaters.push_back(user);
-        user->currentRoom=this;
+        user.currentRoom=this;
     }
     void broadCastInRoom(std::string Username, std::string message){
         std::string fullMessage=Username+" : "+message+"\n";
