@@ -51,7 +51,7 @@ public:
         bool found =false;
         findRoom:
         ChatRoom* roomToJoin=nullptr;
-        for(int i=0;i<rooms.length();i++){
+        for(int i=0;i<rooms.size();i++){
             if(rooms[i].getId()==roomId){
                 found=true;
             }
