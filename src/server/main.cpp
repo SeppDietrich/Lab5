@@ -30,7 +30,7 @@ public:
     void broadCastInRoom(std::string Username, std::string message){
         std::string fullMessage=Username+" : "+message+"\n";
         for (User* user : chaters) {
-            user->sendMessage(fullMessage);
+            user.sendMessage(fullMessage);
         }
     }
 };
@@ -75,7 +75,7 @@ public:
         return Username;
     }
 
-    void sendMessage(const std::string& message) const {
+    void sendMessage(const std::string& message){
         int bytesSent = send(socket, message.c_str(), message.size(), 0);  
         if (bytesSent < 0) {
             std::cerr << "Error sending message to client" << std::endl;
