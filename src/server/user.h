@@ -7,7 +7,8 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include "main.cpp"
+#include "ChatRoom.h"
+
 
 #pragma once
 #define PORT 8080
