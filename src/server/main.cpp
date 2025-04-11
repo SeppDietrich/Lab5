@@ -84,7 +84,7 @@ private:
     ChatRoom* currentRoom;
 
 public:
-    User(int& socket, RoomHandler& rh) : 
+    User(int socket, RoomHandler& rh) : 
         socket(socket), 
         roomHandler(rh),
         currentRoom(nullptr) {}
