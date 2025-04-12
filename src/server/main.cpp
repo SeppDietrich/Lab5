@@ -45,7 +45,7 @@ public:
         return true;
     }
 
-    void handleClient() {
+    void handleClient(RoomHandler roomHandler) {
         char buffer[1024];
 
         while (true) {
@@ -63,8 +63,8 @@ public:
             
             
             
-            std::string fullMessage = parseMessage(message);
-            
+            std::string fullMessage = parseMessage(message, roomHandler);
+        
             //std::cout << fullMessage << "\n";
             
             sendMessage(fullMessage); 
