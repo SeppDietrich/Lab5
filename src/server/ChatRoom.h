@@ -1,6 +1,14 @@
 #pragma once
+#include <iostream>
+#include <cstring>
+#include <cstdlib>
+#include <unistd.h>
+#include <arpa/inet.h>
+#include <thread>
 #include <vector>
 #include <string>
+#include <algorithm>
+#include "User.h"
 
 class User;
 
