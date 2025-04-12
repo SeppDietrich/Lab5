@@ -23,7 +23,7 @@ private:
     
 
 public:
-    User(int socket ) : 
+    User(int socket) : 
         socket(socket) {}
     ~User() {}  
 
