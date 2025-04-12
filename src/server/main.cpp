@@ -23,7 +23,7 @@ private:
     
 
 public:
-    User(int socket, ) : 
+    User(int socket ) : 
         socket(socket) {}
     ~User() {}  
 
@@ -73,7 +73,7 @@ public:
     }
 private:
 
-    std::string parseMessage(std::string message){
+    std::string parseMessage(std::string message, RoomHandler roomHandler){
         message.erase(message.find_last_not_of(" \t\n\r\f\v") + 1);
         if(message[0]!='/'){
             std::string manual=
@@ -220,7 +220,7 @@ int main() {
         }
         std::cout << "New client connected: "<< std::endl;
 
-        User client(clientSocket, &roomHandler);
+        User client(clientSocket);
 
         std::thread(&User::handleClient, &client).detach();
     }
