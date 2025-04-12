@@ -15,89 +15,19 @@
 #define MAX_CLIENTS 10
 
 
-class RoomHandler {
-private:
-    std::vector<ChatRoom> rooms;
-
-    void createRoom(int roomId) {
-        rooms.emplace_back(roomId); 
-
-    }
-
-public:
-    
-    void joinRoom(User* user, int roomId) {
-        ChatRoom* roomToJoin = nullptr;
-        
-        // Find existing room
-        for(auto& room : rooms) {
-            if(room.getId() == roomId) {
-                roomToJoin = &room;
-                break;
-            }
-        }
-        
-        // Create new room if not found
-        if(!roomToJoin) {
-            rooms.emplace_back(roomId);
-            roomToJoin = &rooms.back();
-        }
-        
-        roomToJoin->addChater(user);
-
-    }
-    
-};
-
-class ChatRoom{
-private:
-    std::vector<User*> chaters;
-    int id;
-    
-
-
-public:
-    ChatRoom(int id){
-        this->id=id;
-    }
-    
-    ~ChatRoom() = default;
-    int getId(){return id;}
-    void addChater(User* user){
-        chaters.push_back(user);
-        user->setCurrentRoom(this);
-    }
-    void broadCastInRoom(std::string Username, std::string message){
-        std::string fullMessage=Username+" : "+message+"\n";
-        for(int i=0;i<chaters.size();i++){
-            chaters[i]->sendMessage(fullMessage);
-        }
-       
-    }
-};
-
 class User{
 private:
-    RoomHandler* roomHandler;
+    
     int socket;
     std::string Username;
-    ChatRoom* currentRoom;
+    
 
-public
-    User(int socket, RoomHandler rh) : 
-        socket(socket), 
-        roomHandler(&rh),
-        currentRoom(nullptr) {}
+public:
+    User(int socket, ) : 
+        socket(socket) {}
     ~User() {}  
 
-    ChatRoom* getCurrentRoom() const {
-        return currentRoom;
-    }
-
-    void User::setCurrentRoom(ChatRoom* room) {
-        currentRoom = room;
-    }
-
+    
     void sendMessage(const std::string& message){
         int bytesSent = send(socket, message.c_str(), message.size(), 0);  
         if (bytesSent < 0) {
@@ -174,7 +104,7 @@ private:
                 return "Joining chat: " + data;
             }
             case 'm':{ // /message
-                currentRoom->broadCastInRoom(Username, data);
+                
                 return "Sending message: " + data;
             }
             case 'l':{ // /leave
@@ -188,6 +118,70 @@ private:
         return "Unknown command";
     }
 };
+
+class ChatRoom{
+private:
+    std::vector<User*> chaters;
+    int id;
+    
+
+
+public:
+    ChatRoom(int id){
+        this->id=id;
+    }
+    
+    ~ChatRoom() = default;
+    int getId(){return id;}
+    void addChater(User* user){
+        chaters.push_back(user);
+        
+    }
+    void broadCastInRoom(std::string Username, std::string message){
+        std::string fullMessage=Username+" : "+message+"\n";
+        for(int i=0;i<chaters.size();i++){
+            chaters[i]->sendMessage(fullMessage);
+        }
+       
+    }
+};
+
+class RoomHandler {
+private:
+    std::vector<ChatRoom> rooms;
+
+    void createRoom(int roomId) {
+        rooms.emplace_back(roomId); 
+
+    }
+
+public:
+    
+    void joinRoom(User* user, int roomId) {
+        ChatRoom* roomToJoin = nullptr;
+        
+        // Find existing room
+        for(auto& room : rooms) {
+            if(room.getId() == roomId) {
+                roomToJoin = &room;
+                break;
+            }
+        }
+        
+        // Create new room if not found
+        if(!roomToJoin) {
+            rooms.emplace_back(roomId);
+            roomToJoin = &rooms.back();
+        }
+        
+        roomToJoin->addChater(user);
+
+    }
+    
+};
+
+
+
 RoomHandler roomHandler;
 
 
