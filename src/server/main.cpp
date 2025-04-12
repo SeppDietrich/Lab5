@@ -83,7 +83,7 @@ private:
     std::string Username;
     ChatRoom* currentRoom;
 
-public:
+public
     User(int socket, RoomHandler& rh) : 
         socket(socket), 
         roomHandler(rh),
@@ -226,7 +226,7 @@ int main() {
         }
         std::cout << "New client connected: "<< std::endl;
 
-        User client(clientSocket, roomHandler);
+        User client(clientSocket, &roomHandler);
 
         std::thread(&User::handleClient, &client).detach();
     }
