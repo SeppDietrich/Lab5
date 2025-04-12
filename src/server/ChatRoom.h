@@ -1,4 +1,4 @@
-#pragma once
+
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
@@ -9,7 +9,7 @@
 #include <string>
 #include <algorithm>
 #include "User.h"
-
+#pragma once
 class User;
 
 class ChatRoom {
