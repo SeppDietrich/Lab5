@@ -1,5 +1,7 @@
 #pragma once
 #include <string>
+#include "ChatRoom.h"
+#include "RoomHandler.h"
 
 
 class ChatRoom;
