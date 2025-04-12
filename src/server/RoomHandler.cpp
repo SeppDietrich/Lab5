@@ -1,6 +1,5 @@
-#include <vector>
 #include "RoomHandler.h"
-#include "ChatRoom.h"
+#include "ChatRoom.h"  // Full definitions
 #include "User.h"
 
 class RoomHandler {

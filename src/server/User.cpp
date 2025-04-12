@@ -1,10 +1,7 @@
 #include "User.h"
+#include "ChatRoom.h"  // Now included here (not in the header)
+#include "RoomHandler.h"
 
-
-
-
-#define PORT 8080
-#define MAX_CLIENTS 10
 
 class User{
 private:

@@ -1,9 +1,5 @@
 #include "ChatRoom.h"
-
-#define PORT 8080
-#define MAX_CLIENTS 10
-
-
+#include "User.h"  // Full definition needed here
 
 
 class ChatRoom{

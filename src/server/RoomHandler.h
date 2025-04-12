@@ -1,7 +1,9 @@
 
-#include <vector>
-#include "User.h"
 #pragma once
+#include <vector>
+
+
+class User;
 class ChatRoom;
 
 

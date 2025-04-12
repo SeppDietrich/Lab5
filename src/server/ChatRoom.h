@@ -1,17 +1,10 @@
 
-#include <iostream>
-#include <cstring>
-#include <cstdlib>
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <thread>
+#pragma once
 #include <vector>
 #include <string>
-#include <algorithm>
-#include "User.h"
-#pragma once
-class User;
 
+// Forward declaration instead of #include "User.h"
+class User;
 class ChatRoom {
 private:
     std::vector<User*> chaters;
