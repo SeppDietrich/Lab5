@@ -3,8 +3,6 @@
 #include <vector>
 
 
-class User;
-class ChatRoom;
 
 
 class RoomHandler {

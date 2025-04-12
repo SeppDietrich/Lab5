@@ -4,7 +4,7 @@
 #include <string>
 
 // Forward declaration instead of #include "User.h"
-class User;
+
 class ChatRoom {
 private:
     std::vector<User*> chaters;
