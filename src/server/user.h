@@ -13,11 +13,11 @@ private:
     RoomHandler& roomHandler;  
 
 public:
-    // Updated constructor
+    
     User(int socket, RoomHandler& rh);
     ~User();
     
-    // Existing methods...
+    
     void setCurrentRoom(ChatRoom* room);
     ChatRoom* getCurrentRoom() const;
     void sendMessage(const std::string& message);

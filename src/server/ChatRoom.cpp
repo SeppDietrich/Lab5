@@ -1,13 +1,4 @@
-#include <iostream>
-#include <cstring>
-#include <cstdlib>
-#include <unistd.h>
-#include <arpa/inet.h>
-#include <thread>
-#include <vector>
-#include <string>
-#include <algorithm>
-#include "User.h"
+#include "ChatRoom.h"
 
 #define PORT 8080
 #define MAX_CLIENTS 10

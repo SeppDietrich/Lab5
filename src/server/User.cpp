@@ -27,7 +27,7 @@ public:
     	return currentRoom;
 	}
 
-	void User::setCurrentRoom(ChatRoom* room) {
+	void setCurrentRoom(ChatRoom* room) {
 	    currentRoom = room;
 	}
 
