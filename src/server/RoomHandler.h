@@ -1,8 +1,9 @@
 #pragma once
 #include <vector>
+#include "User.h"
 
 class ChatRoom;
-class User;
+
 
 class RoomHandler {
 private:
